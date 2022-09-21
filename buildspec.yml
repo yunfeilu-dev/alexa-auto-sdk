@@ -8,9 +8,7 @@ phases:
       - apt-get update
       - apt install -y default-jre
       - apt install -y unzip
-      - mkdir -p /home/codebuild-user/devtools/Android/cmdline-tools 
   pre_build:
-    run-as: codebuild-user
     commands:
       - DEV_TOOLS=/home/codebuild-user/devtools
       - ANDROID_HOME=$DEV_TOOLS/Android
@@ -18,6 +16,7 @@ phases:
       - PATH=$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
       - echo $PATH
       - cd /home/codebuild-user
+      - mkdir -p /home/codebuild-user/devtools/Android/cmdline-tools 
       - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
       - unzip commandlinetools-linux-8512546_latest.zip -d /home/codebuild-user/devtools/Android/cmdline-tools
       - cd /home/codebuild-user/devtools/Android/cmdline-tools
@@ -25,10 +24,10 @@ phases:
       - sdkmanager "platform-tools" "platforms;android-29"
       - sdkmanager "build-tools;29.0.3"
       - yes | sdkmanager --licenses
-      - pip install conan
   build:
     run-as: codebuild-user 
     commands:
+      - pip install conan
       - echo $(cd /home/codebuild-user/devtools/Android/cmdline-tools/latest/; ls)
       - mkdir /home/codebuild-user/Projects
       - cd /home/codebuild-user/Projects
