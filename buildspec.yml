@@ -4,12 +4,12 @@ env:
   shell: /bin/sh
   variables: 
     DEV_TOOLS: "/home/ubuntu/devtools"
-    ANDROID_HOME: $DEV_TOOLS/Android
+    ANDROID_HOME:  "/home/ubuntu/devtools/Android"
     LOCAL_HOME: "/home/ubuntu/.local/bin"
-    PATH: $ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
 phases:
   install:
     commands:
+      - PATH=$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
       - echo $PATH
       - apt-get update
       - apt install -y default-jre
