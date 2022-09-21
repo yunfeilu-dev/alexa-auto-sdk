@@ -16,6 +16,7 @@ phases:
       - cd /home/ubuntu
       - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
       - unzip commandlinetools-linux-8512546_latest.zip -d /home/ubuntu/devtools/Android/cmdline-tools
+      - cd /home/ubuntu/devtools/Android/cmdline-tools
       - mv cmdline-tools latest
       - echo $(cd /home/ubuntu/devtools/Android/cmdline-tools/latest/; ls)
       
