@@ -8,6 +8,7 @@ phases:
       - apt-get update
       - apt install -y default-jre
       - apt install -y unzip
+      - mkdir -p /home/codebuild-user/devtools/Android/cmdline-tools 
   pre_build:
     run-as: codebuild-user
     commands:
@@ -16,7 +17,6 @@ phases:
       - LOCAL_HOME=/home/codebuild-user/.local/bin
       - PATH=$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
       - echo $PATH
-      - mkdir -p /home/codebuild-user/devtools/Android/cmdline-tools 
       - cd /home/codebuild-user
       - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
       - unzip commandlinetools-linux-8512546_latest.zip -d /home/codebuild-user/devtools/Android/cmdline-tools
