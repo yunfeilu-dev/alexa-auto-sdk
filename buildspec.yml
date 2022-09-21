@@ -11,16 +11,16 @@ phases:
   pre_build:
     run-as: codebuild-user
     commands:
-      - DEV_TOOLS=/home/$USER/devtools
+      - DEV_TOOLS=/home/codebuild-user/devtools
       - ANDROID_HOME=$DEV_TOOLS/Android
-      - LOCAL_HOME=/home/$USER/.local/bin
+      - LOCAL_HOME=/home/codebuild-user/.local/bin
       - PATH=$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
       - echo $PATH
-      - mkdir -p /home/$USER/devtools/Android/cmdline-tools 
-      - cd /home/$USER
+      - mkdir -p /home/codebuild-user/devtools/Android/cmdline-tools 
+      - cd /home/codebuild-user
       - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
-      - unzip commandlinetools-linux-8512546_latest.zip -d /home/$USER/devtools/Android/cmdline-tools
-      - cd /home/$USER/devtools/Android/cmdline-tools
+      - unzip commandlinetools-linux-8512546_latest.zip -d /home/codebuild-user/devtools/Android/cmdline-tools
+      - cd /home/codebuild-user/devtools/Android/cmdline-tools
       - mv cmdline-tools latest
       - sdkmanager "platform-tools" "platforms;android-29"
       - sdkmanager "build-tools;29.0.3"
@@ -29,11 +29,11 @@ phases:
   build:
     run-as: codebuild-user 
     commands:
-      - echo $(cd /home/$USER/devtools/Android/cmdline-tools/latest/; ls)
-      - mkdir /home/$USER/Projects
-      - cd /home/$USER/Projects
+      - echo $(cd /home/codebuild-user/devtools/Android/cmdline-tools/latest/; ls)
+      - mkdir /home/codebuild-user/Projects
+      - cd /home/codebuild-user/Projects
       - git clone https://github.com/alexa/alexa-auto-sdk.git
-      - cd /home/$USER/Projects/alexa-auto-sdk/aacs/android/sample-app
+      - cd /home/codebuild-user/Projects/alexa-auto-sdk/aacs/android/sample-app
       - ./gradlew assembleLocalRelease
       
     
