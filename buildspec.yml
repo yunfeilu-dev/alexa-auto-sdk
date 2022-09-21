@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  shell: /bin/sh
+  variables: 
+    DEV_TOOLS: "/home/ubuntu/devtools"
+    ANDROID_HOME: "$DEV_TOOLS/Android"
+    LOCAL_HOME: "/home/ubuntu/.local/bin"
+phases:
+  install:
+    commands:
+      - apt-update
+      - apt install default-jre
+      - apt install unzip
+      - mkdir -p /home/ubuntu/devtools/Android/cmdline-tools 
+      - cd /home/ubuntu
+      - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
+      - unzip commandlinetools-linux-8512546_latest.zip -d /home/ubuntu/devtools/Android/cmdline-tools
+      - mv cmdline-tools latest
+      - echo $(cd /home/ubuntu/devtools/Android/cmdline-tools/latest/; ls)
+      
+  build:
+    commands:
+      - echo $(cd /home/ubuntu/devtools/Android/cmdline-tools/latest/; ls)
+    
