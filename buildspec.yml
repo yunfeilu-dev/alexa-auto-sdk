@@ -28,9 +28,9 @@ phases:
     commands:
       - echo $(cd /home/ubuntu/devtools/Android/cmdline-tools/latest/; ls)
       - mkdir /home/ubuntu/Projects
-      - cd ~/Projects
+      - cd /home/ubuntu/Projects
       - git clone https://github.com/alexa/alexa-auto-sdk.git
-      - cd ~/Projects/alexa-auto-sdk/aacs/android/sample-app
+      - cd /home/ubuntu/Projects/alexa-auto-sdk/aacs/android/sample-app
       - ./gradlew assembleLocalRelease
       
     
