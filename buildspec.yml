@@ -25,13 +25,13 @@ phases:
       - sdkmanager "platform-tools" "platforms;android-29"
       - sdkmanager "build-tools;29.0.3"
       - yes | sdkmanager --licenses
+      - mkdir /home/codebuild-user/Projects
+      - cd /home/codebuild-user/Projects
+      - git clone https://github.com/alexa/alexa-auto-sdk.git
   build:
     run-as: codebuild-user 
     commands:
       - echo $(cd /home/codebuild-user/devtools/Android/cmdline-tools/latest/; ls)
-      - mkdir /home/codebuild-user/Projects
-      - cd /home/codebuild-user/Projects
-      - git clone https://github.com/alexa/alexa-auto-sdk.git
       - cd /home/codebuild-user/Projects/alexa-auto-sdk/aacs/android/sample-app
       - ./gradlew assembleLocalRelease
       
