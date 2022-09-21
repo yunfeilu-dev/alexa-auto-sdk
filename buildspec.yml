@@ -9,7 +9,7 @@ env:
 phases:
   install:
     commands:
-      - apt-update
+      - apt-get update
       - apt install default-jre
       - apt install unzip
       - mkdir -p /home/ubuntu/devtools/Android/cmdline-tools 
