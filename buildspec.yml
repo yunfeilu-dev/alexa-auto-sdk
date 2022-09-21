@@ -2,39 +2,38 @@ version: 0.2
 
 env:
   shell: /bin/sh
-  variables: 
-    DEV_TOOLS: "/home/ubuntu/devtools"
-    ANDROID_HOME:  "/home/ubuntu/devtools/Android"
-    LOCAL_HOME: "/home/ubuntu/.local/bin"
 phases:
   install:
     commands:
       - apt-get update
       - apt install -y default-jre
       - apt install -y unzip
-      - pip install conan
   pre_build:
     run-as: codebuild-user
     commands:
+      - DEV_TOOLS=/home/$USER/devtools
+      - ANDROID_HOME=$DEV_TOOLS/Android
+      - LOCAL_HOME=/home/$USER/.local/bin
       - PATH=$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
       - echo $PATH
-      - mkdir -p /home/ubuntu/devtools/Android/cmdline-tools 
-      - cd /home/ubuntu
+      - mkdir -p /home/$USER/devtools/Android/cmdline-tools 
+      - cd /home/$USER
       - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
-      - unzip commandlinetools-linux-8512546_latest.zip -d /home/ubuntu/devtools/Android/cmdline-tools
-      - cd /home/ubuntu/devtools/Android/cmdline-tools
+      - unzip commandlinetools-linux-8512546_latest.zip -d /home/$USER/devtools/Android/cmdline-tools
+      - cd /home/$USER/devtools/Android/cmdline-tools
       - mv cmdline-tools latest
       - sdkmanager "platform-tools" "platforms;android-29"
       - sdkmanager "build-tools;29.0.3"
       - yes | sdkmanager --licenses
+      - pip install conan
   build:
     run-as: codebuild-user 
     commands:
-      - echo $(cd /home/ubuntu/devtools/Android/cmdline-tools/latest/; ls)
-      - mkdir /home/ubuntu/Projects
-      - cd /home/ubuntu/Projects
+      - echo $(cd /home/$USER/devtools/Android/cmdline-tools/latest/; ls)
+      - mkdir /home/$USER/Projects
+      - cd /home/$USER/Projects
       - git clone https://github.com/alexa/alexa-auto-sdk.git
-      - cd /home/ubuntu/Projects/alexa-auto-sdk/aacs/android/sample-app
+      - cd /home/$USER/Projects/alexa-auto-sdk/aacs/android/sample-app
       - ./gradlew assembleLocalRelease
       
     
