@@ -10,8 +10,8 @@ phases:
   install:
     commands:
       - apt-get update
-      - apt install default-jre
-      - apt install unzip
+      - apt install -y default-jre
+      - apt install -y unzip
       - mkdir -p /home/ubuntu/devtools/Android/cmdline-tools 
       - cd /home/ubuntu
       - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
