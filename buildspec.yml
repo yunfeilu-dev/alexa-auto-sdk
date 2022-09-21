@@ -29,7 +29,6 @@ phases:
       - cd /home/codebuild-user/Projects
       - git clone https://github.com/alexa/alexa-auto-sdk.git
   build:
-    run-as: codebuild-user 
     commands:
       - echo $(cd /home/codebuild-user/devtools/Android/cmdline-tools/latest/; ls)
       - cd /home/codebuild-user/Projects/alexa-auto-sdk/aacs/android/sample-app
