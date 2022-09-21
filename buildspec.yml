@@ -6,7 +6,7 @@ env:
     DEV_TOOLS: "/home/ubuntu/devtools"
     ANDROID_HOME: $DEV_TOOLS/Android
     LOCAL_HOME: "/home/ubuntu/.local/bin"
-    PATH: "$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
+    PATH: $ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
 phases:
   install:
     commands:
