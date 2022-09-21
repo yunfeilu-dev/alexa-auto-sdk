@@ -6,7 +6,7 @@ phases:
   install:
     commands:
       - apt-get update
-      - apt install -y default-jre
+      - apt install -y openjdk-11-jdk
       - apt install -y unzip
       - pip install conan
   pre_build:
