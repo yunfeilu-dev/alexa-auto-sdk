@@ -8,13 +8,16 @@ env:
     LOCAL_HOME: "/home/ubuntu/.local/bin"
 phases:
   install:
+    commands:
+      - apt-get update
+      - apt install -y default-jre
+      - apt install -y unzip
+      - pip install conan
+  pre_build:
     run-as: codebuild-user
     commands:
       - PATH=$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
       - echo $PATH
-      - sudo apt-get update
-      - sudo apt install -y default-jre
-      - sudo apt install -y unzip
       - mkdir -p /home/ubuntu/devtools/Android/cmdline-tools 
       - cd /home/ubuntu
       - wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
@@ -24,7 +27,6 @@ phases:
       - sdkmanager "platform-tools" "platforms;android-29"
       - sdkmanager "build-tools;29.0.3"
       - yes | sdkmanager --licenses
-      - pip install conan
   build:
     run-as: codebuild-user 
     commands:
