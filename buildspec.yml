@@ -8,7 +8,7 @@ env:
     LOCAL_HOME: "/home/ubuntu/.local/bin"
 phases:
   install:
-    run-as: ubuntu
+    run-as: codebuild-user
     commands:
       - PATH=$ANDROID_HOME/build-tools/29.0.3:$LOCAL_HOME:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
       - echo $PATH
@@ -26,7 +26,7 @@ phases:
       - yes | sdkmanager --licenses
       - pip install conan
   build:
-    run-as: ubuntu 
+    run-as: codebuild-user 
     commands:
       - echo $(cd /home/ubuntu/devtools/Android/cmdline-tools/latest/; ls)
       - mkdir /home/ubuntu/Projects
