@@ -8,6 +8,7 @@ phases:
       - apt-get update
       - apt install -y default-jre
       - apt install -y unzip
+      - pip install conan
   pre_build:
     commands:
       - DEV_TOOLS=/home/codebuild-user/devtools
@@ -27,7 +28,6 @@ phases:
   build:
     run-as: codebuild-user 
     commands:
-      - pip install conan
       - echo $(cd /home/codebuild-user/devtools/Android/cmdline-tools/latest/; ls)
       - mkdir /home/codebuild-user/Projects
       - cd /home/codebuild-user/Projects
