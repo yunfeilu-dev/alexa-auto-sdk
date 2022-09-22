@@ -4,9 +4,10 @@ env:
   shell: /bin/sh
 phases:
   install:
+    runtime-versions:
+      java: corretto11
     commands:
       - apt-get update
-      - apt install -y openjdk-11-jdk
       - apt install -y unzip
       - pip install conan
   pre_build:
