@@ -29,6 +29,9 @@ phases:
       - mkdir /home/codebuild-user/Projects
       - cd /home/codebuild-user/Projects
       - git clone https://github.com/alexa/alexa-auto-sdk.git
+      - mkdir alexa-auto-sdk/aacs/android/app-components/alexa-auto-voice-interaction/libs
+      - cd alexa-auto-sdk/aacs/android/app-components/alexa-auto-voice-interaction/libs
+      - aws s3 cp s3://yunfeilu-alexa-resource/autovoicechrome.aar .
   build:
     commands:
       - echo $(java --version)
