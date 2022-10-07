@@ -40,6 +40,6 @@ phases:
       - ./gradlew assembleLocalRelease
   post_build:
     commands:
-      - find /home/codebuild-user/Projects/alexa-auto-sdk/builder/.builder/.conan/data/android-sdk-tools/4.0/aac-sdk/stable/package/*/ndk/21.4.7075529/toolchains/llvm/prebuilt/
+      - find /home/codebuild-user/Projects/alexa-auto-sdk/builder/.builder/.conan/data/android-sdk-tools/
       
     
