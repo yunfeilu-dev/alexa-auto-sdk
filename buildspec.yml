@@ -9,6 +9,7 @@ phases:
     commands:
       - apt-get update
       - apt install -y unzip
+      - apt install -y cmake
       - pip install conan
   pre_build:
     commands:
