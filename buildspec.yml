@@ -37,7 +37,7 @@ phases:
       - echo $(java --version)
       - echo $(cd /home/codebuild-user/devtools/Android/cmdline-tools/latest/; ls)
       - cd /home/codebuild-user/Projects/alexa-auto-sdk/aacs/android/sample-app
-      - ./gradlew assembleLocalRelease
+      - yes | ./gradlew assembleLocalRelease
   post_build:
     commands:
       - find /home/codebuild-user/Projects/alexa-auto-sdk/builder/.builder/.conan/data/android-sdk-tools/
