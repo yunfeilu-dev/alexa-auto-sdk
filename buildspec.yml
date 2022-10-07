@@ -24,8 +24,8 @@ phases:
       - cd /home/codebuild-user/devtools/Android/cmdline-tools
       - mv cmdline-tools latest
       - yes | sdkmanager --licenses
-      - sdkmanager "platform-tools" "platforms;android-29"
-      - sdkmanager "build-tools;29.0.3"
+      - yes | sdkmanager "platform-tools" "platforms;android-29"
+      - yes | sdkmanager "build-tools;29.0.3"
       - mkdir /home/codebuild-user/Projects
       - cd /home/codebuild-user/Projects
       - git clone https://github.com/alexa/alexa-auto-sdk.git
