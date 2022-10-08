@@ -43,7 +43,8 @@ phases:
     commands:
       - cmake --version
   artifacts:
-    files: *.apk
+    files:
+    - '*.apk'
     base-directory: /home/codebuild-user/Projects/alexa-auto-sdk/aacs/android/sample-app/alexa-auto-app/build/outputs/apk/local/release
     discard-paths: yes
     
