@@ -32,9 +32,9 @@ phases:
       - git clone https://github.com/alexa/alexa-auto-sdk.git
       - mkdir alexa-auto-sdk/aacs/android/app-components/alexa-auto-voice-interaction/libs
       - cd alexa-auto-sdk/aacs/android/app-components/alexa-auto-voice-interaction/libs
-      - aws s3 cp s3://yunfeilu-alexa-resource/autovoicechrome.aar .
+      - aws s3 cp s3://alexa-auto-app-input-artifact-<accountid>/autovoicechrome.aar .
       - cd /home/codebuild-user
-      - aws s3 cp s3://yunfeilu-alexa-resource/alexa-sign.keystore .
+      - aws s3 cp s3://alexa-auto-app-input-artifact-<accountid>/alexa-sign.keystore .
   build:
     commands:
       - cd /home/codebuild-user/Projects/alexa-auto-sdk/aacs/android/sample-app
