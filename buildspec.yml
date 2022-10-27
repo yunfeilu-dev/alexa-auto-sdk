@@ -10,6 +10,7 @@ phases:
       - apt-get update
       - apt install -y unzip
       - apt install -y cmake
+      - apt install -y jq
       - pip install conan
   pre_build:
     commands:
