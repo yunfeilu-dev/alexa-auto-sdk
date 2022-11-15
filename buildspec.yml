@@ -30,7 +30,9 @@ phases:
       - yes | sdkmanager "build-tools;29.0.3"
       - mkdir /home/codebuild-user/Projects
       - cd /home/codebuild-user/Projects
-      - git clone https://github.com/alexa/alexa-auto-sdk.git
+      - git config --global credential.helper '!aws codecommit credential-helper $@'
+      - git config --global credential.UseHttpPath true
+      - git clone https://git-codecommit.${AWS_REGION}.amazonaws.com/v1/repos/alexa-auto-sdk
       - mkdir alexa-auto-sdk/aacs/android/app-components/alexa-auto-voice-interaction/libs
       - cd alexa-auto-sdk/aacs/android/app-components/alexa-auto-voice-interaction/libs
       - aws s3 cp s3://alexa-auto-app-input-artifact-<accountid>/autovoicechrome.aar .
